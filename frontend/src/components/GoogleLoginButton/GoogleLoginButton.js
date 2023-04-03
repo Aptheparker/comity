@@ -1,18 +1,24 @@
 // imports
 import { useState, useEffect } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // components
 import GoogleLogo from "./google_logo.png";
+import Modal from "../Modal/Modal";
+
+// css
 import "./GoogleLoginButton.css";
+
+// validation
+import { verifyAccount } from "./validation";
 
 const GoogleLoginButton = () => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
-  // const [post, setPost] = useState([]);
+  const [wait, setWait] = useState();
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => setUser(codeResponse),
@@ -39,14 +45,16 @@ const GoogleLoginButton = () => {
             console.log(res.data.picture);
             console.log(res.data.id); // google id
             let verification = verifyAccount(res.data.email);
-            if(verification === 'admin'){
-              alert('Welcome admin ' + res.data.name + '!');
-            }
-            else if(verification === 'user'){
-              alert('Welcome user ' + res.data.name + '!');
-            }
-            else{
-              navigate('/register', { replace: true });
+            if (verification === "admin") {
+              alert("Welcome admin " + res.data.name + "!");
+            } else if (verification === "wait") {
+              alert("Welcome user " + res.data.name + "!");
+              setWait({
+                name: res.data.name,
+                email: res.data.email,
+              });
+            } else {
+              navigate("/register", { replace: true });
             }
           }
         })
@@ -58,40 +66,25 @@ const GoogleLoginButton = () => {
   //   googleLogout();
   // };
 
-  const verifyAccount = (email)  => {
-    if(email === 'aptheparker@gmail.com'){
-      return 'admin'
-    }
-    else{
-      alert('Not verified account. Please register.')
-      return 'not found'
-    }
-    // axios
-    //    .get('') // send with the email
-    //    .then((response) => {
-    //       setPost(response.data);
-    //    })
-    //    .catch((err) => {
-    //       console.log(err);
-    //    });
-    // if(post === 'admin'){
-    //   return 'admin'
-    // }
-    // else if(post === 'user'){
-    //   return 'user'
-    // }
-    // else{
-    //   return 'not found'
-    // }
+  const waitHandler = () => {
+    setWait(null)
   }
 
   return (
-    <button className="google-login-button" onClick={() => login()}>
-      <span className="google-login-button__icon">
-        <img src={GoogleLogo} alt="google-logo" />
-      </span>
-      <span className="google-login-button__text">START WITH GOOGLE</span>
-    </button>
+    <div>
+      {wait && (
+        <Modal
+          modalContent={`Already registered: (${wait.email}) Please wait for admin’s acceptance.`}
+          modalButton={"OK"} onClick={waitHandler}
+        />
+      )}
+      <button className="google-login-button" onClick={() => login()}>
+        <span className="google-login-button__icon">
+          <img src={GoogleLogo} alt="google-logo" />
+        </span>
+        <span className="google-login-button__text">START WITH GOOGLE</span>
+      </button>
+    </div>
   );
 };
 
