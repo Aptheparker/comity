@@ -46,7 +46,7 @@
             {
                 const rss = document.getElementById('rss');
                 const heapTotal = document.getElementById('heapTotal');
-                const heapUsed = document.getElementById('eapUsed');
+                const heapUsed = document.getElementById('heapUsed');
                 const external = document.getElementById('external');
 
                 // will not use tls if the connection is not made over https
@@ -54,7 +54,7 @@
                 const ws = new WebSocket(`${protocol}://${location.host}`);
 
 
-                ws.onmessage = () =>
+                ws.onmessage = (event) =>
                 {
                     const data = JSON.parse(event.data);
 
