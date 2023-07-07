@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import ComitLogoImage from "../../assets/images/comit_logo.png";
 import BackIcon from "./back_icon.png";
 import Title from "../Title/Title";
-import Input from '../Input/Input';
+import Input from "../Input/Input";
 
 // css module
 import styles from "./RegisterForm.module.css";
@@ -17,7 +17,7 @@ function RegisterForm() {
   const [name, setName] = useState("");
   const [studentId, setStudentId] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("Female");
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (event) => {
@@ -44,13 +44,17 @@ function RegisterForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
+
     // Check if any of the fields are empty
-    if (name === "" || studentId === "" || phoneNumber === "" || gender === "") {
+    if (
+      name === "" ||
+      studentId === "" ||
+      phoneNumber === ""
+    ) {
       alert("Please fill in all the fields.");
       return;
     }
-  
+
     console.log("Name:", name);
     console.log("Student ID:", studentId);
     console.log("Phone Number:", phoneNumber);
@@ -64,7 +68,7 @@ function RegisterForm() {
     setStudentId("");
     setPhoneNumber("");
     setGender("");
-  };  
+  };
 
   const goBack = () => {
     navigate("/", { replace: true }); // Navigate back to the previous page
@@ -87,20 +91,47 @@ function RegisterForm() {
       </div>
       <form className={styles["inputs"]} onSubmit={handleSubmit}>
         <div className={styles["input-name"]}>이름</div>
-        <Input type="text" name="name" value={name} placeholder="Ex: 홍길동" onChange={handleChange}/>
+        <Input
+          type="text"
+          name="name"
+          value={name}
+          placeholder="Ex: 홍길동"
+          onChange={handleChange}
+        />
         <div className={styles["input-name"]}>학번</div>
-        <Input type="text" name="studentId" value={studentId} placeholder="Ex: 2020123123" onChange={handleChange}/>
+        <Input
+          type="text"
+          name="studentId"
+          value={studentId}
+          placeholder="Ex: 2020123123"
+          onChange={handleChange}
+        />
         <div className={styles["input-name"]}>전화번호</div>
-        <Input type="text" name="phoneNumber" value={phoneNumber} placeholder="Ex: 01012341234" onChange={handleChange}/>
+        <Input
+          type="text"
+          name="phoneNumber"
+          value={phoneNumber}
+          placeholder="Ex: 01012341234"
+          onChange={handleChange}
+        />
         <div className={styles["input-name"]}>성별</div>
-        <Input type="text" name="gender" value={gender} placeholder="Ex: 남" onChange={handleChange}/>
+        <select
+          id="gender"
+          name="gender"
+          value={gender}
+          onChange={handleChange}
+        >
+          <option value="Male">남자</option>
+          <option value="Female">여자</option>
+        </select>
+
         <button type="submit" className={styles["register-button"]}>
           <span className={styles["register-button__text"]}>Register</span>
         </button>
       </form>
 
       <button type="button" className={styles["back-button"]} onClick={goBack}>
-        <img src={BackIcon} alt="back" className={styles["back-icon"]}/>
+        <img src={BackIcon} alt="back" className={styles["back-icon"]} />
         Back
       </button>
 
