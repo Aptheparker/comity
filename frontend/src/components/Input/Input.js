@@ -1,4 +1,4 @@
-// css module
+// css
 import "./Input.css";
 
 const Input = ({type, name, value, placeholder, onChange}) => {
