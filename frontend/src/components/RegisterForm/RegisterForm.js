@@ -87,7 +87,7 @@ function RegisterForm() {
           alt="comit_logo"
           className={styles["comit-logo"]}
         />
-        <Title text="Register" fontSize={36} marginRight={120}></Title>
+        <Title text="Register" fontSize={36} marginRight={170}/>
       </div>
       <form className={styles["inputs"]} onSubmit={handleSubmit}>
         <div className={styles["input-name"]}>이름</div>
@@ -120,6 +120,7 @@ function RegisterForm() {
           name="gender"
           value={gender}
           onChange={handleChange}
+          className={styles["select"]}
         >
           <option value="Male">남자</option>
           <option value="Female">여자</option>

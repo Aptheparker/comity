@@ -1,6 +1,6 @@
 .google-login-button {
-  width: 400px;
-  height: 60px;
+  width: 600px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content:space-evenly;
@@ -20,7 +20,7 @@
 
 .google-login-button__text {
   color: white;
-  font-size: 20px;
+  font-size: 32px;
   font-family: 'Toppan Bunkyu Gothic';
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;

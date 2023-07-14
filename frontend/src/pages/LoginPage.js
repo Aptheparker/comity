@@ -14,7 +14,7 @@ function LoginPage() {
   return (
     <div className="login-page">
       <NavigationBar/>
-      <Title text="Comity" fontSize={72} marginTop={200}/>
+      <Title text="Comity" fontSize={100} marginTop={200}/>
       <GoogleLogin/>
     </div>
   );
