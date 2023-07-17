@@ -3,7 +3,8 @@ const path = require('path');
 const morgan = require('morgan');
 
 const connect = require('./schemas');
-const usersRouter = require('./routes/users');
+const authRouter = require('./routes/auth');
+const registerRouter = require('./routes/register');
 
 const app = express();
 app.set('port', process.env.PORT || 3002);
@@ -16,7 +17,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/', usersRouter);
+app.use('/auth', authRouter);
+app.use('/register', registerRouter);
 
 app.use((req, res, next) => 
 {
@@ -35,5 +37,5 @@ app.use((err, req, res, next) =>
 
 app.listen(app.get('port'), () =>
 {
-    console.log(app.get('port'), '번 포트에서 대기 중');
+    console.log(`Listening at the port no. ${app.get('port')}`);
 });
