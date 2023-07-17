@@ -44,18 +44,22 @@ const GoogleLoginButton = () => {
             console.log(res.data.email);
             console.log(res.data.picture);
             console.log(res.data.id); // google id
-            let verification = verifyAccount(res.data.email);
-            if (verification === "admin") {
-              alert("Welcome admin " + res.data.name + "!");
-            } else if (verification === "wait") {
-              alert("Welcome user " + res.data.name + "!");
-              setWait({
-                name: res.data.name,
-                email: res.data.email,
-              });
-            } else {
-              navigate("/register", { replace: true });
-            }
+            verifyAccount(res.data.email)
+            .then((verification) => {
+              if (verification === "admin") {
+                alert("Welcome admin " + res.data.name + "!");
+              } else if (verification === "wait") {
+                setWait({
+                  name: res.data.name,
+                  email: res.data.email,
+                });
+              } else {
+                navigate("/register", { replace: true });
+              }
+            })
+            .catch((error) => {
+              console.error(error.message);
+            });
           }
         })
         .catch((err) => console.log(err));
@@ -66,16 +70,17 @@ const GoogleLoginButton = () => {
   //   googleLogout();
   // };
 
-  const waitHandler = () => {
-    setWait(null)
-  }
+  const cleanWait = () => {
+    setWait(null);
+  };
 
   return (
     <div>
       {wait && (
         <Modal
           modalContent={`Already registered: (${wait.email}) Please wait for admin’s acceptance.`}
-          modalButton={"OK"} onClick={waitHandler}
+          modalButton={"OK"}
+          onClick={cleanWait}
         />
       )}
       <button className="google-login-button" onClick={() => login()}>

@@ -1,13 +1,16 @@
-export const verifyAccount = (email) => {
-  if (email === "aptheparker@gmail.com") {
-    return "admin";
-  } else if (email === "sunnypark02179264@gmail.com") {
-    return "wait";
-  } else {
-    alert("Not verified account. Please register.");
-    return "reject";
-  }
+export const verifyAccount = async (email) => {
+  return new Promise((resolve, reject) => {
+    if (email === "aptheparker@gmail.com") {
+      resolve("admin");
+    } else if (email === "sunnypark02179264@gmail.com") {
+      resolve("wait");
+    } else {
+      reject(new Error("Not verified account. Please register."));
+    }
+  });
 };
+
+
 
 
 /* for backend connection */
