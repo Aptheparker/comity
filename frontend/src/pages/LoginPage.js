@@ -1,7 +1,7 @@
 // imports
 
 // components
-import NavigationBar from "../components/layout/NavigationBar";
+import NavigationBar from "../components/Layout/NavigationBar";
 import Title from "../components/Title/Title";
 import GoogleLogin from "../components/GoogleLoginButton/GoogleLoginButton";
 
