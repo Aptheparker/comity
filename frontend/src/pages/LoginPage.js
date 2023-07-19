@@ -1,7 +1,7 @@
 // imports
 
 // components
-import NavigationBar from "../components/Layout/NavigationBar";
+import LoginHeader from "../components/Layout/LoginHeader";
 import Title from "../components/Common/Title";
 import GoogleLogin from "../components/Login/GoogleLoginButton";
 
@@ -11,7 +11,7 @@ import "./LoginPage.css";
 function LoginPage() {
   return (
       <div className="login-page">
-        <NavigationBar />
+        <LoginHeader />
         <Title text="Comity" fontSize={100} marginTop={200} />
         <GoogleLogin />
       </div>
