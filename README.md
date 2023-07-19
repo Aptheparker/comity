@@ -11,7 +11,7 @@
 <!-- Badges -->
 <p>
   <a href="https://github.com/skku-comit/comity/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/aptheparker/me" alt="contributors" />
+    <img src="https://img.shields.io/github/contributors/skku-comit/comity" alt="contributors" />
   </a>
   <a href="">
     <img src="https://img.shields.io/github/last-commit/aptheparker/me" alt="last update" />
