@@ -10,7 +10,7 @@
   
 <!-- Badges -->
 <p>
-  <a href="https://github.com/aptheparker/me/graphs/contributors">
+  <a href="https://github.com/skku-comit/comity/graphs/contributors">
     <img src="https://img.shields.io/github/contributors/aptheparker/me" alt="contributors" />
   </a>
   <a href="">
