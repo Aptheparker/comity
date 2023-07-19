@@ -31,13 +31,13 @@
 </p>
    
 <h4>
-    <a href="https://github.com/aptheparker/me/">View Demo</a>
+    <a href="https://github.com/skku-comit/comitye/">View Demo</a>
   <span> · </span>
-    <a href="https://github.com/aptheparker/me">Documentation</a>
+    <a href="https://github.com/skku-comit/comity">Documentation</a>
   <span> · </span>
-    <a href="https://github.com/aptheparker/me/issues/">Report Bug</a>
+    <a href="https://github.com/skku-comit/comity/issues/">Report Bug</a>
   <span> · </span>
-    <a href="https://github.com/aptheparker/me/issues/">Request Feature</a>
+    <a href="https://github.com/skku-comit/comity/issues/">Request Feature</a>
   </h4>
 </div>
 
