@@ -114,7 +114,17 @@
 
 ### :bangbang: Prerequisites
 
-None
+For React.js:
+
+```bash
+  npm i
+```
+
+For Node.js:
+
+```bash
+  npm i
+```
 
 <!-- Installation -->
 
@@ -135,28 +145,26 @@ None
 Clone the project
 
 ```bash
-  git clone https://github.com/aptheparker/me.git
+  git clone https://github.com/skku-comit/comity.git
 ```
 
 <!-- Usage -->
 
 ## :eyes: Usage
 
-This is a personal website showing my personal information.
-In this website, serveral features are available:
+This is Comit Study Group Website
 
 <ul>
-  <li>Activities</li>
-  <li>Class Information</li>
-  <li>Starbucks</li>
+  <li>Login & Register</li>
+  <li>Create / Join Study Group</li>
 </ul>
 
 <!-- Contributing -->
 
 ## :wave: Contributing
 
-<a href="https://github.com/aptheparker/me/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=aptheparker/me" />
+<a href="https://github.com/skku-comit/comity/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=skku-comit/comity" />
 </a>
 
 Contributions are always welcome!
