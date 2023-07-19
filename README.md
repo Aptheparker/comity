@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="README_img/img1.png" alt="symbol" width="300" height="auto" />
+  <img src="assets/comit_logo.png" alt="symbol" width="300" height="auto" />
   <h1>Comity</h1>
   
   <p>
@@ -70,7 +70,7 @@
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="README_img/img2.png" alt="screenshot" width="900" height="auto"/>
+  <img src="assets/login_screenshot.png" alt="screenshot" width="900" height="auto"/>
 </div>
 
 <!-- TechStack -->
