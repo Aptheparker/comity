@@ -31,7 +31,7 @@
 </p>
    
 <h4>
-    <a href="https://github.com/skku-comit/comity">View Demo</a>
+    <a href="https://github.com/skku-comit/comity/">View Demo</a>
   <span> · </span>
     <a href="https://github.com/skku-comit/comity">Documentation</a>
   <span> · </span>
