@@ -13,12 +13,14 @@ import "./GoogleLoginButton.css";
 
 // validation
 import { verifyAccount } from "../Validation/loginValidation";
+import { checkUserStatus } from '../../services/api';
 
 const GoogleLoginButton = () => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
   const [wait, setWait] = useState();
+  const [isUserIdValid, setIsUserIdValid] = useState(false); //api
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => setUser(codeResponse),
@@ -61,6 +63,14 @@ const GoogleLoginButton = () => {
               console.error(error.message);
             });
           }
+          // const handleCheckUserId = async () => {
+          //   try {
+          //     const response = await checkUserStatus(email);
+          //     setIsUserIdValid(response.isValid); // Assuming the backend returns an object with an "isValid" property
+          //   } catch (error) {
+          //     // Handle the error, e.g., show an error message to the user
+          //   }
+          // };
         })
         .catch((err) => console.log(err));
     }
