@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="assets/comit_logo.png" alt="symbol" width="200" height="auto" />
+  <img src="assets/comit_logo.png" alt="symbol" width="150" height="auto" />
   <h1>Comity</h1>
   
   <p>
