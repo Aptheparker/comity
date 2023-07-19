@@ -14,19 +14,19 @@
     <img src="https://img.shields.io/github/contributors/skku-comit/comity" alt="contributors" />
   </a>
   <a href="">
-    <img src="https://img.shields.io/github/last-commit/aptheparker/me" alt="last update" />
+    <img src="https://img.shields.io/github/last-commit/skku-comit/comity" alt="last update" />
   </a>
-  <a href="https://github.com/aptheparker/me/network/members">
-    <img src="https://img.shields.io/github/forks/aptheparker/me" alt="forks" />
+  <a href="https://github.com/skku-comit/comity/network/members">
+    <img src="https://img.shields.io/github/forks/skku-comit/comity" alt="forks" />
   </a>
-  <a href="https://github.com/aptheparker/me/stargazers">
-    <img src="https://img.shields.io/github/stars/aptheparker/me" alt="stars" />
+  <a href="https://github.com/skku-comit/comity/stargazers">
+    <img src="https://img.shields.io/github/stars/skku-comit/comity" alt="stars" />
   </a>
-  <a href="https://github.com/aptheparker/me/issues/">
-    <img src="https://img.shields.io/github/issues/aptheparker/me" alt="open issues" />
+  <a href="https://github.com/skku-comit/comity/issues/">
+    <img src="https://img.shields.io/github/issues/skku-comit/comity" alt="open issues" />
   </a>
-  <a href="https://github.com/aptheparker/me/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/aptheparker/me.svg" alt="license" />
+  <a href="https://github.com/skku-comit/comity/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/skku-comit/comity.svg" alt="license" />
   </a>
 </p>
    
