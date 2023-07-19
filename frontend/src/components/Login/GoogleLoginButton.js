@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // components
-import GoogleLogo from "./google_logo.png";
-import Modal from "../Modal/Modal";
+import GoogleLogo from "../../assets/images/google_logo.png";
+import Modal from "../../pages/modals/Modal";
 
 // css
 import "./GoogleLoginButton.css";
 
 // validation
-import { verifyAccount } from "./validation";
+import { verifyAccount } from "../Validation/loginValidation";
 
 const GoogleLoginButton = () => {
   const navigate = useNavigate();

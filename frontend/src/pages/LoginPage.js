@@ -2,8 +2,8 @@
 
 // components
 import NavigationBar from "../components/Layout/NavigationBar";
-import Title from "../components/Title/Title";
-import GoogleLogin from "../components/GoogleLoginButton/GoogleLoginButton";
+import Title from "../components/Common/Title";
+import GoogleLogin from "../components/Login/GoogleLoginButton";
 
 // css
 import "./LoginPage.css";

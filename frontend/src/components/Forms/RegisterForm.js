@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 // components
 import ComitLogoImage from "../../assets/images/comit_logo.png";
 import BackIcon from "./back_icon.png";
-import Title from "../Title/Title";
-import Input from "../Input/Input";
+import Title from "../Common/Title";
+import Input from "../Common/Input";
 
 // css module
 import styles from "./RegisterForm.module.css";
@@ -17,7 +17,7 @@ function RegisterForm() {
   const [name, setName] = useState("");
   const [studentId, setStudentId] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [gender, setGender] = useState("Female");
+  const [gender, setGender] = useState("Male");
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (event) => {
