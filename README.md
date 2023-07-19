@@ -80,23 +80,22 @@
 <details>
   <summary>Client</summary>
   <ul>
-    <li>HTML</li>
+    <li>React.js</li>
     <li>CSS</li>
-    <li><a href="https://www.javascript.com/">Javascript</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Server</summary>
   <ul>
-    <li>None</li>
+    <li>Node.js</li>
   </ul>
 </details>
 
 <details>
 <summary>Database</summary>
   <ul>
-    <li>None</li>
+    <li>MongoDB (NoSQL)</li>
   </ul>
 </details>
 
