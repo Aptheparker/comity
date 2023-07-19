@@ -179,9 +179,9 @@ None
 
 ## :handshake: Contact
 
-Your Name - [@instagram](https://www.instagram.com/aptheparker) - aptheparker@gmail.com
+Comit - [@instagram](https://www.instagram.com/skku-comit) - comit1028@naver.com
 
-Project Link: [https://github.com/aptheparker/me](https://github.com/aptheparker/me)
+Project Link: [https://github.com/skku-comit/comity](https://github.com/aptheparker/me)
 
 <!-- Acknowledgments -->
 
