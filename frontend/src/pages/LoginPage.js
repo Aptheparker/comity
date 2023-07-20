@@ -8,7 +8,7 @@ import GoogleLogin from "../components/Login/GoogleLoginButton";
 // css
 import "./LoginPage.css";
 
-function LoginPage() {
+const LoginPage = () => {
   return (
       <div className="login-page">
         <LoginHeader />

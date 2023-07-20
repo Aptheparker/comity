@@ -1,4 +1,3 @@
-// services/api.js
 const BASE_URL = 'http://3.38.168.113'; // Replace with your actual backend URL
 
 export async function checkUserStatus(userId) {

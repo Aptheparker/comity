@@ -1,7 +1,7 @@
 export const verifyAccount = async (email) => {
   return new Promise((resolve, reject) => {
-    if (email === "@gmail.com") {
-      resolve("admin");
+    if (email === "aptheparker@gmail.com") {
+      resolve("user");
     } else if (email === "sunnypark02179264@gmail.com") {
       resolve("wait");
     } else {

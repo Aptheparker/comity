@@ -13,7 +13,7 @@ import "./GoogleLoginButton.css";
 
 // validation
 import { verifyAccount } from "../Validation/loginValidation";
-import { checkUserStatus } from '../../services/api';
+import { checkUserStatus } from "../../services/api";
 
 const GoogleLoginButton = () => {
   const navigate = useNavigate();
@@ -46,10 +46,12 @@ const GoogleLoginButton = () => {
             console.log(res.data.email);
             console.log(res.data.picture);
             console.log(res.data.id); // google id
+
             verifyAccount(res.data.email)
             .then((verification) => {
-              if (verification === "admin") {
-                alert("Welcome admin " + res.data.name + "!");
+              if (verification === "user") {
+                alert("Welcome user " + res.data.name + "!");
+                navigate("/main", { replace: true });
               } else if (verification === "wait") {
                 setWait({
                   name: res.data.name,
@@ -62,23 +64,29 @@ const GoogleLoginButton = () => {
             .catch((error) => {
               console.error(error.message);
             });
+
+            // checkUserStatus(res.data.email)
+            //   .then((response) => {
+            //     if (response.status === "user") {
+            //       alert("Welcome user " + res.data.name + "!");
+            //       navigate("/main", { replace: true });
+            //     } else if (response.status === "wait") {
+            //       setWait({
+            //         name: res.data.name,
+            //         email: res.data.email,
+            //       });
+            //     } else {
+            //       navigate("/register", { replace: true });
+            //     }
+            //   })
+            //   .catch((error) => {
+            //     console.error(error.message);
+            //   });
           }
-          // const handleCheckUserId = async () => {
-          //   try {
-          //     const response = await checkUserStatus(email);
-          //     setIsUserIdValid(response.isValid); // Assuming the backend returns an object with an "isValid" property
-          //   } catch (error) {
-          //     // Handle the error, e.g., show an error message to the user
-          //   }
-          // };
         })
         .catch((err) => console.log(err));
     }
   }, [user, navigate]);
-
-  // const logOut = () => {
-  //   googleLogout();
-  // };
 
   const cleanWait = () => {
     setWait(null);

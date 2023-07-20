@@ -6,7 +6,7 @@ import RegisterForm from '../components/Forms/RegisterForm';
 // css
 import "./RegisterPage.css";
 
-function RegisterPage() {
+const  RegisterPage = () => {
   return (
     <div className="register-page">
       <RegisterForm/>
