@@ -6,6 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { BrowserRouter } from "react-router-dom";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const clientId =
   "546980902278-o6pt366mbkj76ocpc9vnes6hn88kqbt3.apps.googleusercontent.com";

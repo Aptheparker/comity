@@ -48,22 +48,22 @@ const GoogleLoginButton = () => {
             console.log(res.data.id); // google id
 
             verifyAccount(res.data.email)
-            .then((verification) => {
-              if (verification === "user") {
-                alert("Welcome user " + res.data.name + "!");
-                navigate("/main", { replace: true });
-              } else if (verification === "wait") {
-                setWait({
-                  name: res.data.name,
-                  email: res.data.email,
-                });
-              } else {
-                navigate("/register", { replace: true });
-              }
-            })
-            .catch((error) => {
-              console.error(error.message);
-            });
+              .then((verification) => {
+                if (verification === "user") {
+                  alert("Welcome user " + res.data.name + "!");
+                  navigate("/main", { replace: true });
+                } else if (verification === "wait") {
+                  setWait({
+                    name: res.data.name,
+                    email: res.data.email,
+                  });
+                } else {
+                  navigate("/register", { replace: true });
+                }
+              })
+              .catch((error) => {
+                console.error(error.message);
+              });
 
             // checkUserStatus(res.data.email)
             //   .then((response) => {

@@ -1,17 +1,18 @@
 // imports
 
+
 // components
 import MainHeader from "../components/Layout/MainHeader";
 import MainNavigationBar from "../components/Layout/MainNavigationBar";
 
 // css
-import "./MainPage.css";
+import classes from "./MainPage.module.css";
 
 const MainPage = () => {
   return (
-      <div className="main-page">
-        <MainNavigationBar></MainNavigationBar>
-        <MainHeader></MainHeader>
+      <div className={classes['main-page']}>
+        <MainNavigationBar/>
+        <MainHeader/>
       </div>
   );
 }

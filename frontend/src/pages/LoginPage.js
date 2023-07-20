@@ -10,12 +10,12 @@ import "./LoginPage.css";
 
 const LoginPage = () => {
   return (
-      <div className="login-page">
-        <LoginHeader />
-        <Title text="Comity" fontSize={100} marginTop={200} />
-        <GoogleLogin />
-      </div>
+    <div className="login-page">
+      <LoginHeader />
+      <Title text="Comity" fontSize={100} marginTop={200} />
+      <GoogleLogin />
+    </div>
   );
-}
+};
 
 export default LoginPage;
