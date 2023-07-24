@@ -1,6 +1,6 @@
 // imports
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // components
 import ComitLogoImage from "../../assets/images/comit_logo.png";
@@ -11,7 +11,20 @@ import Input from "../Common/Input";
 // css module
 import styles from "./RegisterForm.module.css";
 
+// context
+import EmailContext from "../../context/EmailContext";
+
+// services
+import { userRegister } from "../../services/api";
+
 function RegisterForm() {
+  const { email } = useContext(EmailContext);
+  // ... Rest of the code
+
+  const location = useLocation();
+  const emailFromContext = email || location.state?.email || "";
+  console.log("Email:", emailFromContext);
+
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -45,12 +58,24 @@ function RegisterForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const userInfo = {
+      name: name,
+      email: email,
+      studentID: studentId,
+      phoneNumber: phoneNumber,
+      sex: gender,
+    };
+
+    userRegister(userInfo)
+      .then((response) => {
+        console.log("response from server: ",response);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+
     // Check if any of the fields are empty
-    if (
-      name === "" ||
-      studentId === "" ||
-      phoneNumber === ""
-    ) {
+    if (name === "" || studentId === "" || phoneNumber === "") {
       alert("Please fill in all the fields.");
       return;
     }
@@ -87,7 +112,7 @@ function RegisterForm() {
           alt="comit_logo"
           className={styles["comit-logo"]}
         />
-        <Title text="Register" fontSize={36} marginRight={170}/>
+        <Title text="Register" fontSize={36} marginRight={170} />
       </div>
       <form className={styles["inputs"]} onSubmit={handleSubmit}>
         <div className={styles["input-name"]}>이름</div>

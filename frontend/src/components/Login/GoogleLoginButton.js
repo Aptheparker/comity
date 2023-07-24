@@ -1,5 +1,5 @@
 // imports
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -13,11 +13,13 @@ import "./GoogleLoginButton.css";
 
 // validation
 import { checkUserStatus } from "../../services/api";
-import useUserEmail from "../../hooks/useUserEmail";
+
+// context
+import EmailContext from "../../context/EmailContext";
 
 
 const GoogleLoginButton = () => {
-  const { setUserEmail } = useUserEmail();
+  const { setEmail } = useContext(EmailContext);
 
   const navigate = useNavigate();
 
@@ -53,18 +55,19 @@ const GoogleLoginButton = () => {
             console.log(res.data.picture);
             console.log(res.data.id); // google id
 
-            setUserEmail(res.data.email);
-
+            setEmail(res.data.email); // Set the email in the context
 
             checkUserStatus(res.data.email)
               .then((response) => {
                 if (response.status === "user") {
-                  alert("Welcome user " + res.data.name + "!");
-                  navigate("/main", { replace: true });
+                  navigate("/main", {
+                    state: { email: res.data.email },
+                    replace: true,
+                  });
                 } else if (response.status === "wait") {
-                  setWait({
-                    name: res.data.name,
-                    email: res.data.email,
+                  navigate("/register", {
+                    state: { email: res.data.email },
+                    replace: true,
                   });
                 } else {
                   navigate("/register", { replace: true });
