@@ -12,20 +12,26 @@ import Modal from "../../pages/modals/Modal";
 import "./GoogleLoginButton.css";
 
 // validation
-import { verifyAccount } from "../Validation/loginValidation";
 import { checkUserStatus } from "../../services/api";
+import useUserEmail from "../../hooks/useUserEmail";
+
 
 const GoogleLoginButton = () => {
+  const { setUserEmail } = useUserEmail();
+
   const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
   const [wait, setWait] = useState();
-  const [isUserIdValid, setIsUserIdValid] = useState(false); //api
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => setUser(codeResponse),
     onError: (error) => console.log("Login Failed:", error),
   });
+
+  const cleanWait = () => {
+    setWait(null);
+  };
 
   useEffect(() => {
     if (user) {
@@ -47,12 +53,15 @@ const GoogleLoginButton = () => {
             console.log(res.data.picture);
             console.log(res.data.id); // google id
 
-            verifyAccount(res.data.email)
-              .then((verification) => {
-                if (verification === "user") {
+            setUserEmail(res.data.email);
+
+
+            checkUserStatus(res.data.email)
+              .then((response) => {
+                if (response.status === "user") {
                   alert("Welcome user " + res.data.name + "!");
                   navigate("/main", { replace: true });
-                } else if (verification === "wait") {
+                } else if (response.status === "wait") {
                   setWait({
                     name: res.data.name,
                     email: res.data.email,
@@ -64,33 +73,11 @@ const GoogleLoginButton = () => {
               .catch((error) => {
                 console.error(error.message);
               });
-
-            // checkUserStatus(res.data.email)
-            //   .then((response) => {
-            //     if (response.status === "user") {
-            //       alert("Welcome user " + res.data.name + "!");
-            //       navigate("/main", { replace: true });
-            //     } else if (response.status === "wait") {
-            //       setWait({
-            //         name: res.data.name,
-            //         email: res.data.email,
-            //       });
-            //     } else {
-            //       navigate("/register", { replace: true });
-            //     }
-            //   })
-            //   .catch((error) => {
-            //     console.error(error.message);
-            //   });
           }
         })
         .catch((err) => console.log(err));
     }
   }, [user, navigate]);
-
-  const cleanWait = () => {
-    setWait(null);
-  };
 
   return (
     <div>
