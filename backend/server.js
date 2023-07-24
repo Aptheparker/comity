@@ -10,6 +10,8 @@ const app = express();
 app.set('port', process.env.PORT || 3002);
 app.set('view engine', 'html');
 
+let isDisableKeepAlive = false;
+
 connect();
 
 app.use(morgan('dev'));
@@ -19,6 +21,15 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/auth', authRouter);
 app.use('/register', registerRouter);
+
+app.use((req, res, next) =>
+{
+    if(isDisableKeepAlive)
+    {
+        res.set('Connection', 'close');
+    }
+    next();
+});
 
 app.use((req, res, next) => 
 {
@@ -37,5 +48,16 @@ app.use((err, req, res, next) =>
 
 app.listen(app.get('port'), () =>
 {
+    process.send('ready');
     console.log(`Listening at the port no. ${app.get('port')}`);
+});
+
+process.on('SIGINT', () =>
+{
+    isDisableKeepAlive = true;
+    app.close(() =>
+    {
+        console.log('server closed');
+        process.exit(0);
+    });
 });
