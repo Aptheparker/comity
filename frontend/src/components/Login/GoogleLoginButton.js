@@ -57,20 +57,24 @@ const GoogleLoginButton = () => {
 
             setEmail(res.data.email); // Set the email in the context
 
-            checkUserStatus(res.data.email)
+            const userEmail = {
+              email: res.data.email,
+            };
+
+            checkUserStatus(userEmail)
               .then((response) => {
-                if (response.status === "user") {
+                if (response.status === "User") {
                   navigate("/main", {
                     state: { email: res.data.email },
                     replace: true,
                   });
-                } else if (response.status === "wait") {
+                } else if (response.status === "Waiting") {
+                  setWait(res.data.email);
+                } else {
                   navigate("/register", {
                     state: { email: res.data.email },
                     replace: true,
                   });
-                } else {
-                  navigate("/register", { replace: true });
                 }
               })
               .catch((error) => {
