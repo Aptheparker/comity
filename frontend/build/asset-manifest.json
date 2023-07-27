@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/skku-comit.github.io/comity/static/css/main.8b3d9bd4.css",
+    "main.js": "/skku-comit.github.io/comity/static/js/main.f6b6f665.js",
+    "static/js/651.e36ff112.chunk.js": "/skku-comit.github.io/comity/static/js/651.e36ff112.chunk.js",
+    "static/media/comit_logo.png": "/skku-comit.github.io/comity/static/media/comit_logo.eb78515fef579672cb44.png",
+    "static/media/register_background.jpeg": "/skku-comit.github.io/comity/static/media/register_background.707ef25e820904d27829.jpeg",
+    "static/media/google_logo.png": "/skku-comit.github.io/comity/static/media/google_logo.3ef9c0f3e4a9ca72e5a1.png",
+    "static/media/main_background.jpeg": "/skku-comit.github.io/comity/static/media/main_background.d57cca4d01859f43c242.jpeg",
+    "static/media/register_form.jpeg": "/skku-comit.github.io/comity/static/media/register_form.e01ab3d24c498d178a26.jpeg",
+    "index.html": "/skku-comit.github.io/comity/index.html",
+    "main.8b3d9bd4.css.map": "/skku-comit.github.io/comity/static/css/main.8b3d9bd4.css.map",
+    "main.f6b6f665.js.map": "/skku-comit.github.io/comity/static/js/main.f6b6f665.js.map",
+    "651.e36ff112.chunk.js.map": "/skku-comit.github.io/comity/static/js/651.e36ff112.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8b3d9bd4.css",
+    "static/js/main.f6b6f665.js"
+  ]
+}
