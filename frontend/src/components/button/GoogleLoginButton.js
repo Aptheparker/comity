@@ -6,7 +6,7 @@ import axios from "axios";
 
 // components
 import GoogleLogo from "../../assets/images/google_logo.png";
-import Modal from "../../pages/modals/Modal";
+import Modal from "../modals/Modal";
 
 // css
 import classes from "./GoogleLoginButton.module.css";
@@ -31,7 +31,7 @@ const GoogleLoginButton = () => {
     onError: (error) => console.log("Login Failed:", error),
   });
 
-  const cleanWait = () => {
+  const cleanWaitHandler = () => {
     setWait(null);
   };
 
@@ -93,7 +93,7 @@ const GoogleLoginButton = () => {
           modalTitle={`Already registered: (${user.email})`}
           modalContent={"Please wait for admin’s acceptance."}
           modalButton={"OK"}
-          onClick={cleanWait}
+          onCleanWait={cleanWaitHandler}
         />
       )}
       <button className={classes["google-login-button"]} onClick={() => login()}>
