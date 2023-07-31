@@ -10,12 +10,6 @@
   align-items: center;
 }
 
-
-.inputs {
-  justify-content: left;
-  margin-top: 30px;
-}
-
 .input-name {
   font-size: 28px;
   color: white;
@@ -28,52 +22,54 @@
 }
 
 .register-button {
-  width: 180px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-  border: 1px solid #fff;
-  background: linear-gradient(180deg, #90f 49.48%, rgba(153, 0, 255, 0) 100%);
+  width: 70%;
+  height: 10%;
+  border-radius: 10px;
+  border: none;
+  background-color: #603ebb;
   cursor: pointer;
-  margin-top: 50px;
-  margin-left: 60px;
 }
 
 .register-button:hover {
-  background-color: grey;
+  background-color: #7e56da;
 }
 
 .register-button__text {
   color: white;
-  font-size: 28px;
-  font-family: 'Toppan Bunkyu Gothic';
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
 }
 
 .back-button {
-  margin-top: 20px;
-  margin-right: 320px;
+  width: 18%;
+  height: 7%;
+  margin-top: 5%;
+  margin-right: 55%;
+  border-radius: 10px;
   border: none;
-  background: none; 
-  color: white;
+  background-color: #603ebb;
   cursor: pointer;
-  font-size: 18px;
-  font-family: 'Toppan Bunkyu Gothic';
   display: flex;
+  justify-content: center;
   align-items: center;
+  padding: 0;
 }
 
-.back-icon {
-  width: 10px;
-  height: 10px;
-  margin-right: 5px;
+.back-button:hover {
+  background-color: #7e56da;
 }
 
-.register-button:hover {
-  background-color: black;
+.back-button__icon{
+  color: white;
+  font-size: 20px;
+}
+
+.back-button__text{
+  color: white;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  -webkit-text-stroke-width: 1px;
 }
 
 .modal {

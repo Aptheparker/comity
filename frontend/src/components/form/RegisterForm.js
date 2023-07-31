@@ -6,6 +6,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Text from "../common/Text";
 import Input from "../common/Input";
 
+// mui
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+
 // css module
 import styles from "./RegisterForm.module.css";
 
@@ -36,7 +39,7 @@ function RegisterForm() {
 
     // Update the corresponding state based on the input field name
     switch (name) {
-      case "name":
+      case "이름":
         setName(value);
         break;
       case "studentId":
@@ -99,34 +102,32 @@ function RegisterForm() {
   };
 
   return (
-    <div className={styles["register-form"]}>
-      <Text text={"REGISTER"} fontSize={24} />
-      <form className={styles["inputs"]} onSubmit={handleSubmit}>
-        <div className={styles["input-name"]}>이름</div>
+    <>
+      <form className={styles["register-form"]} onSubmit={handleSubmit}>
+        <Text text={"REGISTER"} fontSize={24} />
         <Input
           type="text"
-          name="name"
+          name="이름"
           value={name}
           placeholder="Ex: 홍길동"
           onChange={handleChange}
         />
-        <div className={styles["input-name"]}>학번</div>
         <Input
           type="text"
           name="studentId"
+          id="studentId"
           value={studentId}
           placeholder="Ex: 2020123123"
           onChange={handleChange}
         />
-        <div className={styles["input-name"]}>전화번호</div>
         <Input
           type="text"
           name="phoneNumber"
+          id="phoneNumber"
           value={phoneNumber}
           placeholder="Ex: 01012341234"
           onChange={handleChange}
         />
-        <div className={styles["input-name"]}>성별</div>
         <select
           id="gender"
           name="gender"
@@ -143,6 +144,11 @@ function RegisterForm() {
         </button>
       </form>
 
+      <button type="button" className={styles["back-button"]} onClick={()=>{navigate('/')}}>
+        <ArrowBackIosIcon className={styles["back-button__icon"]} />
+        <span className={styles["back-button__text"]}>BACK</span>
+      </button>
+
       {submitted && (
         <div className={styles["modal"]}>
           <div className={styles["modal-content"]}>
@@ -156,7 +162,7 @@ function RegisterForm() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

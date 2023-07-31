@@ -1,17 +1,19 @@
 // css
-import "./Input.css";
+import classes from "./Input.module.css";
 
-const Input = ({type, name, value, placeholder, onChange}) => {
-
+const Input = ({ type, name, value, placeholder, onChange }) => {
   return (
-    <input
-      type={type}
-      className="input"
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      onChange={onChange}
-    />
+    <fieldset className={classes["fieldset"]}>
+      <legend>{name}</legend>
+      <input
+        type={type}
+        className={classes["input"]}
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
+    </fieldset>
   );
 };
 
