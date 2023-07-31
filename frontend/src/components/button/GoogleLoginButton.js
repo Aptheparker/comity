@@ -69,11 +69,7 @@ const GoogleLoginButton = () => {
                     replace: true,
                   });
                 } else if (response.status === "Waiting") {
-                  // setWait(res.data.email);
-                  navigate("/register", {
-                    state: { email: res.data.email },
-                    replace: true,
-                  });
+                  setWait(res.data.email);
                 } else {
                   navigate("/register", {
                     state: { email: res.data.email },
@@ -88,7 +84,7 @@ const GoogleLoginButton = () => {
         })
         .catch((err) => console.log(err));
     }
-  }, [user, navigate]);
+  }, [user, navigate, setEmail]);
 
   return (
     <>
@@ -103,7 +99,7 @@ const GoogleLoginButton = () => {
         <span className="google-login-button__icon">
           <img src={GoogleLogo} alt="google-logo" />
         </span>
-        <span className="google-login-button__text">Start With Google</span>
+        <span className="google-login-button__text">Start with Google</span>
       </button>
     </>
   );

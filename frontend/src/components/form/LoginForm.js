@@ -1,17 +1,26 @@
+
+
 // components
-import Title from '../common/Text';
-import GoogleLogin from '../button/GoogleLoginButton';
+import Title from "../common/Text";
+import RegisterButton from "../button/RegisterButton";
+import GoogleLoginButton from "../button/GoogleLoginButton";
 // css
 import classes from "./LoginForm.module.css";
 
 const LoginForm = () => {
-  return(
+  return (
     <div className={classes["login-form"]}>
-      <Title text={'Start'} fontSize={24}/>
-      <Title text={'---------- or continue with ----------'} color={'grey'} fontSize={14}/>
-      <GoogleLogin />
-    </div>
-  )
-}
+      <Title text={"Start"} fontSize={24} />
+      <RegisterButton />
 
-export default LoginForm
+      <Title
+        text={"-------------- or continue with --------------"}
+        color={"grey"}
+        fontSize={14}
+      />
+      <GoogleLoginButton />
+    </div>
+  );
+};
+
+export default LoginForm;
