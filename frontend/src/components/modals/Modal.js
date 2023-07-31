@@ -8,7 +8,7 @@ const Modal = ({ modalTitle, modalContent, modalButton, onCleanWait }) => {
       <div className={classes.title}>{modalTitle}</div>
       <div className={classes.content}>{modalContent}</div>
       <button className={classes.button} onClick={onCleanWait}>
-        {modalButton}d
+        {modalButton}
       </button>
     </div>
   );
