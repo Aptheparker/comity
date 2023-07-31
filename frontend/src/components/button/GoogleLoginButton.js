@@ -9,7 +9,7 @@ import GoogleLogo from "../../assets/images/google_logo.png";
 import Modal from "../../pages/modals/Modal";
 
 // css
-import "./GoogleLoginButton.css";
+import classes from "./GoogleLoginButton.module.css";
 
 // validation
 import { checkUserStatus } from "../../services/api";
@@ -90,16 +90,17 @@ const GoogleLoginButton = () => {
     <>
       {wait && (
         <Modal
-          modalContent={`Already registered: (${wait.email}) Please wait for admin’s acceptance.`}
+          modalTitle={`Already registered: (${user.email})`}
+          modalContent={"Please wait for admin’s acceptance."}
           modalButton={"OK"}
           onClick={cleanWait}
         />
       )}
-      <button className="google-login-button" onClick={() => login()}>
-        <span className="google-login-button__icon">
+      <button className={classes["google-login-button"]} onClick={() => login()}>
+        <span className={classes["google-login-button__icon"]}>
           <img src={GoogleLogo} alt="google-logo" />
         </span>
-        <span className="google-login-button__text">Start with Google</span>
+      <span className={classes["google-login-button__text"]}>Start with Google</span>
       </button>
     </>
   );

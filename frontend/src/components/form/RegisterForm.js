@@ -42,13 +42,13 @@ function RegisterForm() {
       case "이름":
         setName(value);
         break;
-      case "studentId":
+      case "학번":
         setStudentId(value);
         break;
-      case "phoneNumber":
+      case "전화번호":
         setPhoneNumber(value);
         break;
-      case "gender":
+      case "성별":
         setGender(value);
         break;
       default:
@@ -114,7 +114,7 @@ function RegisterForm() {
         />
         <Input
           type="text"
-          name="studentId"
+          name="학번"
           id="studentId"
           value={studentId}
           placeholder="Ex: 2020123123"
@@ -122,7 +122,7 @@ function RegisterForm() {
         />
         <Input
           type="text"
-          name="phoneNumber"
+          name="전화번호"
           id="phoneNumber"
           value={phoneNumber}
           placeholder="Ex: 01012341234"
@@ -130,7 +130,7 @@ function RegisterForm() {
         />
         <select
           id="gender"
-          name="gender"
+          name="성별"
           value={gender}
           onChange={handleChange}
           className={styles["select"]}
