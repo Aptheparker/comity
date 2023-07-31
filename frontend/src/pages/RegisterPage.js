@@ -1,7 +1,7 @@
 // imports
 
 // components
-import RegisterForm from '../components/Forms/RegisterForm';
+import RegisterForm from '../components/form/RegisterForm';
 
 // css
 import "./RegisterPage.css";

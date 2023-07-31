@@ -3,10 +3,7 @@ import { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // components
-import ComitLogoImage from "../../assets/images/comit_logo.png";
-import BackIcon from "./back_icon.png";
-import Title from "../Common/Title";
-import Input from "../Common/Input";
+import Input from "../common/Input";
 
 // css module
 import styles from "./RegisterForm.module.css";
@@ -95,9 +92,6 @@ function RegisterForm() {
     setGender("");
   };
 
-  const goBack = () => {
-    navigate("/", { replace: true }); // Navigate back to the previous page
-  };
 
   const closeModal = () => {
     setSubmitted(false);
@@ -107,12 +101,6 @@ function RegisterForm() {
   return (
     <div className={styles["register-form"]}>
       <div className={styles["register-top"]}>
-        <img
-          src={ComitLogoImage}
-          alt="comit_logo"
-          className={styles["comit-logo"]}
-        />
-        <Title text="Register" fontSize={36} marginRight={170} />
       </div>
       <form className={styles["inputs"]} onSubmit={handleSubmit}>
         <div className={styles["input-name"]}>이름</div>
@@ -156,10 +144,6 @@ function RegisterForm() {
         </button>
       </form>
 
-      <button type="button" className={styles["back-button"]} onClick={goBack}>
-        <img src={BackIcon} alt="back" className={styles["back-icon"]} />
-        Back
-      </button>
 
       {submitted && (
         <div className={styles["modal"]}>

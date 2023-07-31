@@ -1,19 +1,25 @@
 // imports
 
 // components
-import LoginHeader from "../components/Layout/LoginHeader";
-import Title from "../components/Common/Title";
-import GoogleLogin from "../components/Login/GoogleLoginButton";
+import LeftLayout from "../components/layout/LeftLayout";
+import RightLayout from "../components/layout/RightLayout";
+import LoginForm from "../components/form/LoginForm";
 
 // css
-import "./LoginPage.css";
+import classes from "./LoginPage.module.css";
 
 const LoginPage = () => {
   return (
-    <div className="login-page">
-      <LoginHeader />
-      <Title text="Comity" fontSize={100} marginTop={200} />
-      <GoogleLogin />
+    // <div className="login-page">
+    //   <LoginHeader />
+    //   <Title text="Comity" fontSize={100} marginTop={200} />
+    //   <GoogleLogin />
+    // </div>
+    <div className={classes["login-page"]}>
+      <LeftLayout Title1={"COMITY"} Title2={"Start"} />
+      <RightLayout>
+        <LoginForm />
+      </RightLayout>
     </div>
   );
 };

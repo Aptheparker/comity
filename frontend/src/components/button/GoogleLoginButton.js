@@ -69,7 +69,11 @@ const GoogleLoginButton = () => {
                     replace: true,
                   });
                 } else if (response.status === "Waiting") {
-                  setWait(res.data.email);
+                  // setWait(res.data.email);
+                  navigate("/register", {
+                    state: { email: res.data.email },
+                    replace: true,
+                  });
                 } else {
                   navigate("/register", {
                     state: { email: res.data.email },
@@ -87,7 +91,7 @@ const GoogleLoginButton = () => {
   }, [user, navigate]);
 
   return (
-    <div>
+    <>
       {wait && (
         <Modal
           modalContent={`Already registered: (${wait.email}) Please wait for admin’s acceptance.`}
@@ -99,9 +103,9 @@ const GoogleLoginButton = () => {
         <span className="google-login-button__icon">
           <img src={GoogleLogo} alt="google-logo" />
         </span>
-        <span className="google-login-button__text">START WITH GOOGLE</span>
+        <span className="google-login-button__text">Start With Google</span>
       </button>
-    </div>
+    </>
   );
 };
 

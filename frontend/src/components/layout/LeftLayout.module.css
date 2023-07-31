@@ -1,0 +1,19 @@
+.left-layout{
+  background-color: #212329;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.comit-logo {
+  width: 10%;
+  height:8%;
+  margin: 3%;
+}
+
+.comit-logo img {
+  width: 100%;
+  height: 100%;
+}

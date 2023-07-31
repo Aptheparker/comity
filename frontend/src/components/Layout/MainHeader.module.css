@@ -1,6 +1,0 @@
-/* MainHeader.module.css */
-@media (max-width: 768px) {
-  .searchBar {
-    width: 200px; /* Set the desired height for the search bar on mobile devices */
-  }
-}
