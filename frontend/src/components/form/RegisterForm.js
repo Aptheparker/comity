@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // components
+import Text from "../common/Text";
 import Input from "../common/Input";
 
 // css module
@@ -65,7 +66,7 @@ function RegisterForm() {
 
     userRegister(userInfo)
       .then((response) => {
-        console.log("response from server: ",response);
+        console.log("response from server: ", response);
       })
       .catch((error) => {
         console.error(error.message);
@@ -92,7 +93,6 @@ function RegisterForm() {
     setGender("");
   };
 
-
   const closeModal = () => {
     setSubmitted(false);
     navigate("/", { replace: true });
@@ -100,8 +100,7 @@ function RegisterForm() {
 
   return (
     <div className={styles["register-form"]}>
-      <div className={styles["register-top"]}>
-      </div>
+      <Text text={"REGISTER"} fontSize={24} />
       <form className={styles["inputs"]} onSubmit={handleSubmit}>
         <div className={styles["input-name"]}>이름</div>
         <Input
@@ -143,7 +142,6 @@ function RegisterForm() {
           <span className={styles["register-button__text"]}>Register</span>
         </button>
       </form>
-
 
       {submitted && (
         <div className={styles["modal"]}>
