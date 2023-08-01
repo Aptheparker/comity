@@ -15,10 +15,19 @@
   color: white;
 }
 
+.select-legend{
+  width: 60%;
+  border: 1px solid #7E56DA;
+  border-radius: 10px;
+  color: #8D8F9F;
+}
+
 .select{
-  width: 100px;
-  height: 30px;
-  font-size: 18px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 20px;
 }
 
 .register-button {

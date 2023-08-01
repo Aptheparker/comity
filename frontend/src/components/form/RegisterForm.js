@@ -7,10 +7,10 @@ import Text from "../common/Text";
 import Input from "../common/Input";
 
 // mui
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 // css module
-import styles from "./RegisterForm.module.css";
+import classes from "./RegisterForm.module.css";
 
 // context
 import EmailContext from "../../context/EmailContext";
@@ -103,7 +103,7 @@ function RegisterForm() {
 
   return (
     <>
-      <form className={styles["register-form"]} onSubmit={handleSubmit}>
+      <form className={classes["register-form"]} onSubmit={handleSubmit}>
         <Text text={"REGISTER"} fontSize={24} />
         <Input
           type="text"
@@ -128,36 +128,45 @@ function RegisterForm() {
           placeholder="Ex: 01012341234"
           onChange={handleChange}
         />
-        <select
-          id="gender"
-          name="성별"
-          value={gender}
-          onChange={handleChange}
-          className={styles["select"]}
-        >
-          <option value="Male">남자</option>
-          <option value="Female">여자</option>
-        </select>
+        <fieldset className={classes["select-legend"]}>
+          <legend>성별</legend>
+          <select
+            id="gender"
+            name="성별"
+            value={gender}
+            onChange={handleChange}
+            className={classes["select"]}
+          >
+            <option value="Male">남자</option>
+            <option value="Female">여자</option>
+          </select>
+        </fieldset>
 
-        <button type="submit" className={styles["register-button"]}>
-          <span className={styles["register-button__text"]}>Register</span>
+        <button type="submit" className={classes["register-button"]}>
+          <span className={classes["register-button__text"]}>Register</span>
         </button>
       </form>
 
-      <button type="button" className={styles["back-button"]} onClick={()=>{navigate('/')}}>
-        <ArrowBackIosIcon className={styles["back-button__icon"]} />
-        <span className={styles["back-button__text"]}>BACK</span>
+      <button
+        type="button"
+        className={classes["back-button"]}
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        <ArrowBackIosIcon className={classes["back-button__icon"]} />
+        <span className={classes["back-button__text"]}>BACK</span>
       </button>
 
       {submitted && (
-        <div className={styles["modal"]}>
-          <div className={styles["modal-content"]}>
+        <div className={classes["modal"]}>
+          <div className={classes["modal-content"]}>
             <h2>Submitted</h2>
             <button
-              className={styles["close-modal-button"]}
+              className={classes["close-modal-button"]}
               onClick={closeModal}
             >
-              <span className={styles["close-modal-button__text"]}>Close</span>
+              <span className={classes["close-modal-button__text"]}>Close</span>
             </button>
           </div>
         </div>
