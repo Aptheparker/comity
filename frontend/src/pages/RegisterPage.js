@@ -1,4 +1,5 @@
 // imports
+import { useLocation } from "react-router-dom";
 
 // components
 import LeftLayout from "../components/layout/LeftLayout";
@@ -10,6 +11,10 @@ import Text from "../components/common/Text";
 import classes from "./RegisterPage.module.css";
 
 const RegisterPage = () => {
+
+  const location = useLocation();
+  const emailFromGoogle = location.state ? location.state.email : null;
+
   return (
     <div className={classes["register-page"]}>
       <LeftLayout Title1={"COMITY"} Title2={"Sign Up"}>

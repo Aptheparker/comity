@@ -12,19 +12,10 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 // css module
 import classes from "./RegisterForm.module.css";
 
-// context
-import EmailContext from "../../context/EmailContext";
-
 // services
 import { userRegister } from "../../services/api";
 
 function RegisterForm() {
-  const { email } = useContext(EmailContext);
-  // ... Rest of the code
-
-  const location = useLocation();
-  const emailFromContext = email || location.state?.email || "";
-  console.log("Email:", emailFromContext);
 
   const navigate = useNavigate();
 
@@ -61,7 +52,7 @@ function RegisterForm() {
 
     const userInfo = {
       name: name,
-      email: email,
+      // email: email,
       studentID: studentId,
       phoneNumber: phoneNumber,
       sex: gender,

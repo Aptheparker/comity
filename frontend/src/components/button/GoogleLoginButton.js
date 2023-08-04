@@ -1,5 +1,5 @@
 // imports
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -14,12 +14,7 @@ import classes from "./GoogleLoginButton.module.css";
 // validation
 import { checkUserStatus } from "../../services/api";
 
-// context
-import EmailContext from "../../context/EmailContext";
-
-
 const GoogleLoginButton = () => {
-  const { setEmail } = useContext(EmailContext);
 
   const navigate = useNavigate();
 
@@ -50,12 +45,6 @@ const GoogleLoginButton = () => {
         )
         .then((res) => {
           if (res.data) {
-            console.log(res.data.name);
-            console.log(res.data.email);
-            console.log(res.data.picture);
-            console.log(res.data.id); // google id
-
-            setEmail(res.data.email); // Set the email in the context
 
             const userEmail = {
               email: res.data.email,
@@ -84,13 +73,13 @@ const GoogleLoginButton = () => {
         })
         .catch((err) => console.log(err));
     }
-  }, [user, navigate, setEmail]);
+  }, [user, navigate]);
 
   return (
     <>
       {wait && (
         <Modal
-          modalTitle={`Already registered: (${user.email})`}
+          modalTitle={`Already registered: (${wait})`}
           modalContent={"Please wait for admin’s acceptance."}
           modalButton={"OK"}
           onCleanWait={cleanWaitHandler}
