@@ -8,32 +8,27 @@ router.route('/')
     {
         try
         {
-            const newUser = new User
+            const newUser = await User.create
             ({
                 name: req.body.name,
                 email: req.body.email,
                 studentID: req.body.studentID,
                 phoneNumber: req.body.phoneNumber,
                 sex: req.body.sex,
-                status: "Waiting"
+                userStatus: "Waiting"
             });
-            newUser.save()
-                .then(() => 
-                {
-                    console.log(`User named ${req.body.name} is created successfully`);
-                })
-                .catch((err) =>
-                {
-                    console.log(`Failed to create the user named ${req.body.name}`);
-                    console.error(err);
-                });
-            console.log(newUser);
             
-            const verifyQuery = User.findOne({ email: req.body.email });
+            console.log(newUser);            
+            const verifyQuery = await User.find({ email: req.body.email });
+            if(verifyQuery.length !== 0)
+            {
+                res.status(201).json({ status: "success", email: verifyQuery.email, userStatus: verifyQuery[0].userStatus });
+            }
+            else
+            {
+                throw new Error('Failed to save the user');
+            }
 
-            res
-                .status(201)
-                .json({ email: verifyQuery.email, status: verifyQuery.status });
         }
         catch (err)
         {

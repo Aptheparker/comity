@@ -11,16 +11,16 @@ router.route('/')
         {
             const query_email = req.body.email;
             const query = await User.find({ email: query_email });
-            let userStatus = "";
+            let _userStatus = "";
             if (query.length === 0)
             {
-                userStatus = "Not Exist";
+                _userStatus = "Not Exist";
             }
             else
             {
-                userStatus = query[0].status;
+                _userStatus = query[0].userStatus;
             }
-            res.json({ email: query_email, status: userStatus });
+            res.json({ email: query_email, userStatus: _userStatus });
         }
         catch (err)
         {
