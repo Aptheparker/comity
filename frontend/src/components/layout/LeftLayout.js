@@ -10,8 +10,8 @@ const LeftLayout = ({Title1, Title2, children}) => {
       <div className={classes["comit-logo"]}>
         <img src={ComitLogo} alt="comit-logo" />
       </div>
-      <Text text={Title1} color={'#603EBB'} fontSize={64} marginTop={100} marginLeft={50}/>
-      <Text text={Title2} color={'white'} fontSize={64} marginLeft={50}/>
+      <Text className={classes['title']} text={Title1} />
+      <Text className={classes['subtitle']} text={Title2}/>
       {children}
     </div>
   );

@@ -7,3 +7,9 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 768px) {
+  .right-layout {
+    width: 100%;
+  }
+}

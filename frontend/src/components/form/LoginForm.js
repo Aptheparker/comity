@@ -9,7 +9,7 @@ import classes from "./LoginForm.module.css";
 const LoginForm = () => {
   return (
     <div className={classes["login-form"]}>
-      <Text text={"Start"} fontSize={24} />
+      <Text className={classes['form-title']} text={"Start"}/>
       <GoogleLoginButton />
     </div>
   );

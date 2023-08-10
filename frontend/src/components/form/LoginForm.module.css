@@ -9,3 +9,14 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
+.form-title{
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .login-form {
+    width: 90%;
+    height: 50%;
+  }
+}

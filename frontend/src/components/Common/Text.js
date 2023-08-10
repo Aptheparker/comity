@@ -1,17 +1,16 @@
-// css
-import "./Text.css"
+import React from "react";
+import classes from "./Text.module.css";
 
-const Text =({text, color, fontSize, marginTop, marginRight, marginLeft})=>{
+const Text = ({
+  text,
+  className,
+}) => {
 
-  const textStyle = {
-    color: `${color}`,
-    fontSize: `${fontSize}px`,
-    marginTop: `${marginTop}px`,
-    marginRight: `${marginRight}px`,
-    marginLeft: `${marginLeft}px`,
-  }
-
-  return <div className="text" style={textStyle}>{text}</div>
-}
+  return (
+    <div className={`${classes.text} ${className}`}>
+      {text}
+    </div>
+  );
+};
 
 export default Text;
