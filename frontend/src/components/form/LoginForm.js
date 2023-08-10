@@ -1,8 +1,7 @@
 
 
 // components
-import Title from "../common/Text";
-import RegisterButton from "../button/RegisterButton";
+import Text from "../common/Text";
 import GoogleLoginButton from "../button/GoogleLoginButton";
 // css
 import classes from "./LoginForm.module.css";
@@ -10,14 +9,7 @@ import classes from "./LoginForm.module.css";
 const LoginForm = () => {
   return (
     <div className={classes["login-form"]}>
-      <Title text={"Start"} fontSize={24} />
-      <RegisterButton />
-
-      <Title
-        text={"-------------- or continue with --------------"}
-        color={"grey"}
-        fontSize={14}
-      />
+      <Text text={"Start"} fontSize={24} />
       <GoogleLoginButton />
     </div>
   );

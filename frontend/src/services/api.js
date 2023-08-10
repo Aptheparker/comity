@@ -35,7 +35,6 @@ export async function userRegister(userInfo) {
     });
 
     if (!response.ok) {
-      // If response is not 2xx, throw an error
       throw new Error("Network response was not ok");
     }
 
