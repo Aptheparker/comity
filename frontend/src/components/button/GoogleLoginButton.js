@@ -6,7 +6,7 @@ import axios from "axios";
 
 // components
 import GoogleLogo from "../../assets/images/google_logo.png";
-import Modal from "../modals/Modal";
+import Modal from "../common/Modal";
 
 // css
 import classes from "./GoogleLoginButton.module.css";

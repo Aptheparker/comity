@@ -10,11 +10,6 @@ import classes from "./LoginPage.module.css";
 
 const LoginPage = () => {
   return (
-    // <div className="login-page">
-    //   <LoginHeader />
-    //   <Title text="Comity" fontSize={100} marginTop={200} />
-    //   <GoogleLogin />
-    // </div>
     <div className={classes["login-page"]}>
       <LeftLayout
         Title1={"COMITY"}
