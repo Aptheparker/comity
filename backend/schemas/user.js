@@ -30,7 +30,7 @@ const userSchema = new Schema
         type: String,
         required: true,
     },
-    status:
+    userStatus:
     {
         type: String,
         required: true,
