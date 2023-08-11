@@ -2,12 +2,13 @@
 import React from "react";
 import classes from "./Modal.module.css";
 
-const Modal = ({ modalTitle, modalContent, modalButton, onCleanWait }) => {
+const Modal = ({ modalImage, modalTitle, modalContent, modalButton, onClean }) => {
   return (
-    <div className={classes['modal']}>
-      <div className={classes['title']}>{modalTitle}</div>
-      <div className={classes['content']}>{modalContent}</div>
-      <button className={classes['button']} onClick={onCleanWait}>
+    <div className={classes["modal"]}>
+      <img src={modalImage} className={classes["modal-image"]} alt="emoji"/>
+      <div className={classes["modal-title"]}>{modalTitle}</div>
+      <div className={classes["modal-content"]}>{modalContent}</div>
+      <button className={classes["modal-button"]} onClick={onClean}>
         {modalButton}
       </button>
     </div>

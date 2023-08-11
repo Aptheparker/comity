@@ -1,6 +1,6 @@
 .modal {
   width: 33%;
-  height: 30%;
+  height: 40%;
   top: 35vh;
   left: 53%;
   background-color: white;
@@ -16,18 +16,23 @@
   position: fixed;
 }
 
-.title{
+.modal-image{
+  width: 80px;
+  height: 80px;
+}
+
+.modal-title{
   font-size: 24px;
   font-weight: bold;
 }
 
-.content {
+.modal-content {
   font-size: 20px;
 }
 
-.button {
+.modal-button {
   width: 70%;
-  height: 20%;
+  height: 15%;
   border-radius: 10px;
   background-color: #603EBB;
   color: white;

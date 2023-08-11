@@ -8,18 +8,21 @@ import axios from "axios";
 import GoogleLogo from "../../assets/images/google_logo.png";
 import Modal from "../common/Modal";
 
+// images
+import CryingImage from "../../assets/icons/crying_emoji.png";
+
 // css
 import classes from "./GoogleLoginButton.module.css";
 
-// validation
+// api
 import { checkUserStatus } from "../../services/api";
 
 const GoogleLoginButton = () => {
-
   const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
   const [wait, setWait] = useState();
+  const [notExist, setNotExist] = useState();
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => setUser(codeResponse),
@@ -28,6 +31,11 @@ const GoogleLoginButton = () => {
 
   const cleanWaitHandler = () => {
     setWait(null);
+  };
+
+  const cleanNotExistHandler = () => {
+    setNotExist(null);
+    navigate('/register')
   };
 
   useEffect(() => {
@@ -44,22 +52,20 @@ const GoogleLoginButton = () => {
         )
         .then((res) => {
           if (res.data) {
+            const email = res.data.email;
 
-
-            checkUserStatus(res.data.email)
+            checkUserStatus(email)
               .then((response) => {
                 if (response.userStatus === "User") {
                   navigate("/main", {
-                    state: { email: res.data.email },
+                    state: { email: email },
                     replace: true,
                   });
                 } else if (response.userStatus === "Waiting") {
-                  setWait(res.data.email);
+                  // setWait(true);
+                  setNotExist(true);
                 } else {
-                  navigate("/register", {
-                    state: { email: res.data.email },
-                    replace: true,
-                  });
+
                 }
               })
               .catch((error) => {
@@ -75,17 +81,32 @@ const GoogleLoginButton = () => {
     <>
       {wait && (
         <Modal
-          modalTitle={`Already registered: (${wait})`}
-          modalContent={"Please wait for admin’s acceptance."}
+          modalImage={CryingImage}
+          modalTitle={"이미 가입 신청을 완료한 이메일입니다."}
+          modalContent={"관리자의 승인을 기다려주십시오."}
           modalButton={"OK"}
-          onCleanWait={cleanWaitHandler}
+          onClean={cleanWaitHandler}
         />
       )}
-      <button className={classes["google-login-button"]} onClick={() => login()}>
+      {notExist && (
+        <Modal
+          modalImage={CryingImage}
+          modalTitle={"등록되지 않은 회원입니다."}
+          modalContent={"회원가입을 해주세요."}
+          modalButton={"OK"}
+          onClean={cleanNotExistHandler}
+        />
+      )}
+      <button
+        className={classes["google-login-button"]}
+        onClick={() => login()}
+      >
         <span className={classes["google-login-button__icon"]}>
           <img src={GoogleLogo} alt="google-logo" />
         </span>
-      <span className={classes["google-login-button__text"]}>Start with Google</span>
+        <span className={classes["google-login-button__text"]}>
+          Start with Google
+        </span>
       </button>
     </>
   );

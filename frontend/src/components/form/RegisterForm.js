@@ -1,10 +1,14 @@
 // imports
-import { useState, useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // components
 import Text from "../common/Text";
 import Input from "../common/Input";
+import Modal from "../common/Modal";
+
+// images
+import CryingImage from "../../assets/icons/crying_emoji.png";
 
 // mui
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
@@ -16,14 +20,15 @@ import classes from "./RegisterForm.module.css";
 import { userRegister } from "../../services/api";
 
 function RegisterForm() {
-
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [studentId, setStudentId] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [gender, setGender] = useState("Male");
+
   const [submitted, setSubmitted] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -52,19 +57,11 @@ function RegisterForm() {
 
     const userInfo = {
       name: name,
-      // email: email,
+      email: "aptheparker@gmail.com",
       studentID: studentId,
       phoneNumber: phoneNumber,
       sex: gender,
     };
-
-    userRegister(userInfo)
-      .then((response) => {
-        console.log("response from server: ", response);
-      })
-      .catch((error) => {
-        console.error(error.message);
-      });
 
     // Check if any of the fields are empty
     if (name === "" || studentId === "" || phoneNumber === "") {
@@ -72,13 +69,18 @@ function RegisterForm() {
       return;
     }
 
-    console.log("Name:", name);
-    console.log("Student ID:", studentId);
-    console.log("Phone Number:", phoneNumber);
-    console.log("Gender:", gender);
-
-    // show the modal
-    setSubmitted(true);
+    userRegister(userInfo)
+      .then((response) => {
+        setSubmitted(true)
+        // if (response.status == "ok") {
+        //   setSubmitted(true);
+        // } else {
+        //   setFailed(true);
+        // }
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
 
     // Reset the form
     setName("");
@@ -89,7 +91,7 @@ function RegisterForm() {
 
   const closeModal = () => {
     setSubmitted(false);
-    navigate("/", { replace: true });
+    setFailed(false);
   };
 
   return (
@@ -150,17 +152,23 @@ function RegisterForm() {
       </button>
 
       {submitted && (
-        <div className={classes["modal"]}>
-          <div className={classes["modal-content"]}>
-            <h2>Submitted</h2>
-            <button
-              className={classes["close-modal-button"]}
-              onClick={closeModal}
-            >
-              <span className={classes["close-modal-button__text"]}>Close</span>
-            </button>
-          </div>
-        </div>
+        <Modal
+          modalImage={CryingImage}
+          modalTitle={"가입 성공."}
+          modalContent={"성공"}
+          modalButton={"OK"}
+          onClean={closeModal}
+        />
+      )}
+
+      {failed && (
+        <Modal
+          modalImage={CryingImage}
+          modalTitle={"가입 실패."}
+          modalContent={"이미 회원가입을 했거나 없는 이메일입니다."}
+          modalButton={"OK"}
+          onClean={closeModal}
+        />
       )}
     </>
   );
