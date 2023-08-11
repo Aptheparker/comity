@@ -45,18 +45,15 @@ const GoogleLoginButton = () => {
         .then((res) => {
           if (res.data) {
 
-            const userEmail = {
-              email: res.data.email,
-            };
 
-            checkUserStatus(userEmail)
+            checkUserStatus(res.data.email)
               .then((response) => {
-                if (response.status === "User") {
+                if (response.userStatus === "User") {
                   navigate("/main", {
                     state: { email: res.data.email },
                     replace: true,
                   });
-                } else if (response.status === "Waiting") {
+                } else if (response.userStatus === "Waiting") {
                   setWait(res.data.email);
                 } else {
                   navigate("/register", {

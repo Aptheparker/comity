@@ -1,11 +1,14 @@
 export async function checkUserStatus(userEmail) {
   try {
+    const userInfo = {
+      email: userEmail,
+    };
     const response = await fetch("/auth", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userEmail),
+      body: JSON.stringify(userInfo),
     });
 
     if (!response.ok) {
