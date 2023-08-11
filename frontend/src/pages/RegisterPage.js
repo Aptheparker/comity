@@ -1,5 +1,4 @@
 // imports
-import { useLocation } from "react-router-dom";
 
 // components
 import LeftLayout from "../components/layout/LeftLayout";
@@ -11,35 +10,18 @@ import Text from "../components/common/Text";
 import classes from "./RegisterPage.module.css";
 
 const RegisterPage = () => {
-
-  const location = useLocation();
-  const emailFromGoogle = location.state ? location.state.email : null;
-
   return (
     <div className={classes["register-page"]}>
       <LeftLayout Title1={"COMITY"} Title2={"Sign Up"}>
-        <Text
-          text="Study"
-          color={"white"}
-          fontSize={24}
-          marginTop={50}
-          marginLeft={50}
-        />
-        <Text text="Design" color={"white"} fontSize={24} marginLeft={50} />
-        <Text text="Coding" color={"white"} fontSize={24} marginLeft={50} />
-        <Text
-          text="Comity"
-          color={"white"}
-          fontSize={16}
-          marginTop={150}
-          marginLeft={50}
-        />
-        <Text
-          text="comit.skku.io"
-          color={"white"}
-          fontSize={16}
-          marginLeft={50}
-        />
+        <div className={classes["description"]}>
+          <Text className={classes["description-text"]} text="Study" />
+          <Text className={classes["description-text"]} text="Design" />
+          <Text className={classes["description-text"]} text="Coding" />
+        </div>
+        <div className={classes["information"]}>
+          <Text className={classes["information-text"]} text="Comity" />
+          <Text className={classes["information-text"]} text="comit.skku.io" />
+        </div>
       </LeftLayout>
 
       <RightLayout>

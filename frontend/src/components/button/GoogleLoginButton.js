@@ -32,7 +32,6 @@ const GoogleLoginButton = () => {
 
   useEffect(() => {
     if (user) {
-      console.log(user);
       axios
         .get(
           `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
