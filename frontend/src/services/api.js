@@ -1,7 +1,7 @@
 // imports
 import axios from "axios";
 
-export async function checkUserStatus(userEmail) {
+export async function checkUserStatus(userEmail) { // login
   try {
     const userInfo = {
       email: userEmail,
@@ -21,7 +21,7 @@ export async function checkUserStatus(userEmail) {
   }
 }
 
-export async function userRegister(userInfo) {
+export async function userRegister(userInfo) { // register
   try {
     const response = await axios.post("/register", userInfo, {
       headers: {
