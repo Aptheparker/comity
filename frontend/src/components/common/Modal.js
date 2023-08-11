@@ -1,5 +1,7 @@
 // React and CSS imports
 import React from "react";
+
+// css
 import classes from "./Modal.module.css";
 
 const Modal = ({ modalImage, modalTitle, modalContent, modalButton, onClean }) => {
