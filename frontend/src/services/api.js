@@ -1,3 +1,4 @@
+// imports
 import axios from "axios";
 
 export async function checkUserStatus(userEmail) {
