@@ -9,22 +9,25 @@ router.route('/')
     {
         try
         {
-            const query_email = req.body.email;
-            const query = await User.find({ email: query_email });
-            let _userStatus = "";
+            const queryEmail = req.body.email;
+            const query = await User.find({ email: queryEmail });
+            let clientStatus = "";
+
             if (query.length === 0)
             {
-                _userStatus = "Not Exist";
+                clientStatus = "Not Exist";
             }
             else
             {
-                _userStatus = query[0].userStatus;
+                // console.log(query);
+                clientStatus = query[0].userStatus;
             }
-            res.json({ email: query_email, userStatus: _userStatus });
+
+            res.json({ email: queryEmail, userStatus: clientStatus });
         }
         catch (err)
         {
-            console.error(err);
+            // console.error(err);
             next(err);
         }
     });

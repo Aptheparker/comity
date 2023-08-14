@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const connect = require('./schemas');
 const authRouter = require('./routes/auth');
@@ -8,16 +9,26 @@ const registerRouter = require('./routes/register');
 
 const app = express();
 app.set('port', process.env.PORT || 3002);
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
+app.set('views', path.join(__dirname, 'views'));
 
 let isDisableKeepAlive = false;
 
 connect();
 
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+const corsOptions = 
+{
+    origin: "https://comity.vercel.com",
+    methods: ["GET", "PORT"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}
+app.use(cors(corsOptions));
 
 app.use('/auth', authRouter);
 app.use('/register', registerRouter);
@@ -40,7 +51,7 @@ app.use((req, res, next) =>
 
 app.use((err, req, res, next) =>
 {
-    req.locals.message = err.message;
+    res.locals.message = err.message;
     res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
     res.status(err.status || 500);
     res.render('error');
@@ -48,7 +59,7 @@ app.use((err, req, res, next) =>
 
 app.listen(app.get('port'), () =>
 {
-    process.send('ready');
+    //process.send('ready');
     console.log(`Listening at the port no. ${app.get('port')}`);
 });
 

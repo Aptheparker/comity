@@ -8,6 +8,15 @@ router.route('/')
     {
         try
         {
+            // Find user in database to check if the email is duplicated
+            const emailQuery = await User.find({ email: req.body.email });
+
+            if (emailQuery.length !== 0)
+            {
+                res.status(200).json({ status: "duplicated", email: emailQuery[0].email, userStatus: emailQuery[0].userStatus})
+            }
+
+            // Then create a new user in the database
             const newUser = await User.create
             ({
                 name: req.body.name,
@@ -18,22 +27,23 @@ router.route('/')
                 userStatus: "Waiting"
             });
             
-            console.log(newUser);            
+            // console.log(newUser);
+            
             const verifyQuery = await User.find({ email: req.body.email });
-            if(verifyQuery.length !== 0)
+            if (verifyQuery.length !== 0)
             {
-                res.status(201).json({ status: "success", email: verifyQuery.email, userStatus: verifyQuery[0].userStatus });
+                res.status(201).json({ status: "success", email: verifyQuery[0].email, userStatus: verifyQuery[0].userStatus });
             }
             else
             {
-                throw new Error('Failed to save the user');
+                throw new Error('Failed to create the user');
             }
 
         }
         catch (err)
         {
             console.log('Failed to register the user');
-            console.error(err);
+            // console.error(err);
             next(err);
         }
     });
