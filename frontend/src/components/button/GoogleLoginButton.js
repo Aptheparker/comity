@@ -57,7 +57,7 @@ const GoogleLoginButton = () => {
         .then((res) => {
           if (res.data) {
             const email = res.data.email;
-            ctx.setEmail(email);
+            // ctx.setEmail(email);
 
             checkUserStatus(email)
               .then((response) => {
