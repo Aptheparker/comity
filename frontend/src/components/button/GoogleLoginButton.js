@@ -1,5 +1,5 @@
 // imports
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -17,8 +17,12 @@ import classes from "./GoogleLoginButton.module.css";
 // api
 import { checkUserStatus } from "../../services/api";
 
+// context
+import EmailContext from "../../context/email-context";
+
 const GoogleLoginButton = () => {
   const navigate = useNavigate();
+  const ctx = useContext(EmailContext)
 
   const [user, setUser] = useState(null);
   const [wait, setWait] = useState();
@@ -53,6 +57,7 @@ const GoogleLoginButton = () => {
         .then((res) => {
           if (res.data) {
             const email = res.data.email;
+            ctx.setEmail(email);
 
             checkUserStatus(email)
               .then((response) => {
@@ -75,7 +80,7 @@ const GoogleLoginButton = () => {
         })
         .catch((err) => console.log(err));
     }
-  }, [user, navigate]);
+  }, [user, navigate, ctx]);
 
   return (
     <>

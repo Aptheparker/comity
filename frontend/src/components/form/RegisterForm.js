@@ -1,5 +1,5 @@
 // imports
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 // components
@@ -19,18 +19,23 @@ import classes from "./RegisterForm.module.css";
 // services
 import { userRegister } from "../../services/api";
 
+// context
+import EmailContext from "../../context/email-context";
+
 function RegisterForm() {
   const navigate = useNavigate();
+  const ctx = useContext(EmailContext);
 
   const [name, setName] = useState("");
   const [studentId, setStudentId] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [gender, setGender] = useState("Male");
 
-  const [submitted, setSubmitted] = useState(false);
-  const [failed, setFailed] = useState(false);
+  const [submitted, setSubmitted] = useState(false); // for modal
+  const [failed, setFailed] = useState(false); // for modal
 
   const handleChange = (event) => {
+
     const { name, value } = event.target;
 
     // Update the corresponding state based on the input field name
@@ -57,7 +62,7 @@ function RegisterForm() {
 
     const userInfo = {
       name: name,
-      email: "aptheparker@gmail.com",
+      email: ctx.email,
       studentID: studentId,
       phoneNumber: phoneNumber,
       sex: gender,
@@ -71,7 +76,7 @@ function RegisterForm() {
 
     userRegister(userInfo)
       .then((response) => {
-        setSubmitted(true)
+        setSubmitted(true);
         // if (response.status == "ok") {
         //   setSubmitted(true);
         // } else {
@@ -121,19 +126,16 @@ function RegisterForm() {
           placeholder="Ex: 01012341234"
           onChange={handleChange}
         />
-        <fieldset className={classes["select-legend"]}>
-          <legend>성별</legend>
-          <select
-            id="gender"
-            name="성별"
-            value={gender}
-            onChange={handleChange}
-            className={classes["select"]}
-          >
-            <option value="Male">남자</option>
-            <option value="Female">여자</option>
-          </select>
-        </fieldset>
+        <Input
+          type="select"
+          name="성별"
+          value={gender}
+          onChange={handleChange}
+          options={[
+            { value: "Male", label: "남자" },
+            { value: "Female", label: "여자" },
+          ]}
+        />
 
         <button type="submit" className={classes["register-button"]}>
           <span className={classes["register-button__text"]}>Register</span>
