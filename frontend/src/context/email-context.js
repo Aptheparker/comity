@@ -1,8 +1,22 @@
-import {createContext} from 'react';
+import { useState, createContext } from "react";
 
 const EmailContext = createContext({
   email: null,
   setEmail: () => {},
 });
 
-export default EmailContext;
+export const EmailContextProvider = ({ children }) => {
+  const [email, setEmail] = useState(null);
+
+  const setEmailValue = (newEmail) => {
+    setEmail(newEmail);
+  };
+
+  return (
+    <EmailContext.Provider value={{ email, setEmail: setEmailValue }}>
+      {children}
+    </EmailContext.Provider>
+  );
+};
+
+export default EmailContext

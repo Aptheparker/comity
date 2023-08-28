@@ -7,7 +7,7 @@ export async function checkUserStatus(userEmail) { // login
       email: userEmail,
     };
 
-    const response = await axios.post("/auth", userInfo, {
+    const response = await axios.post("http://3.38.168.113/auth", userInfo, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -23,7 +23,7 @@ export async function checkUserStatus(userEmail) { // login
 
 export async function userRegister(userInfo) { // register
   try {
-    const response = await axios.post("/register", userInfo, {
+    const response = await axios.post("http://3.38.168.113/register", userInfo, {
       headers: {
         "Content-Type": "application/json",
       },

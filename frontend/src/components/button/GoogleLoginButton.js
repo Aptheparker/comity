@@ -1,4 +1,4 @@
-// imports
+// hooks
 import { useState, useEffect, useContext } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
@@ -21,13 +21,13 @@ import { checkUserStatus } from "../../services/api";
 import EmailContext from "../../context/email-context";
 
 const GoogleLoginButton = () => {
-  const navigate = useNavigate();
-  const ctx = useContext(EmailContext)
 
+  const ctx = useContext(EmailContext); // context
   const [user, setUser] = useState(null);
   const [wait, setWait] = useState();
   const [notExist, setNotExist] = useState();
-
+  const navigate = useNavigate();
+  
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => setUser(codeResponse),
     onError: (error) => console.log("Login Failed:", error),
@@ -39,7 +39,7 @@ const GoogleLoginButton = () => {
 
   const cleanNotExistHandler = () => {
     setNotExist(null);
-    navigate('/register')
+    navigate("/register");
   };
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const GoogleLoginButton = () => {
         .then((res) => {
           if (res.data) {
             const email = res.data.email;
-            ctx.setEmail(email);
+            // ctx.setEmail(email);
 
             checkUserStatus(email)
               .then((response) => {
@@ -70,7 +70,6 @@ const GoogleLoginButton = () => {
                   // setWait(true);
                   setNotExist(true);
                 } else {
-
                 }
               })
               .catch((error) => {
