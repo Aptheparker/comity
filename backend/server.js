@@ -24,8 +24,8 @@ app.use(express.urlencoded({ extended: false }));
 
 const corsOptions = 
 {
-    origin: "https://comity.vercel.com",
-    methods: ["GET", "PORT"],
+    origin: "*",
+    methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
 }
 app.use(cors(corsOptions));
